@@ -14,6 +14,7 @@ The following command removes a specific ticket and all of it's articles from Za
 
  Ticket.find(4).destroy
 
+
 Delete some tickets
 ------------------
 
@@ -31,6 +32,24 @@ This removes all existing tickets within Zammad.
 ::
 
  Ticket.destroy_all
+
+
+Delete a certain attachment
+---------------------------
+
+In cases where customers accidentally send you a file containing confidential data, it may be useful to remove only the attachment. This command removes a single attachment from a ticket article.
+
+Preview first:
+
+::
+
+ pp Ticket.find(4).articles[0].attachments[0]; nil
+ 
+Actually delete the attachment:
+
+::
+
+ Ticket.find(4).articles[0].attachments[0].destroy
 
 
 Delete one or more users with all their related information
